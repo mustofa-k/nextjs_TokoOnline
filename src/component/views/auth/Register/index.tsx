@@ -3,9 +3,10 @@ import Styles from "./Register.module.scss";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import Input from "@/component/Ui/input";
-import Button from "@/component/Ui/Button";
+
 import authServices from "@/services/auth";
 import Authlayout from "@/component/layouts/AuthLayout";
+import Button from "@/component/Ui/Button";
 
 const RegisterView = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +46,7 @@ const RegisterView = () => {
   };
 
   return (
-    <Authlayout title="Register" link="/auth/login" linkText="Login" isError={isError}>
+    <Authlayout title="Register" link="/auth/login" linkText="have an account? Sign in " isError={isError}>
       <form onSubmit={handleSubmit}>
         <Input label="Email" name="email" type="email" />
         <Input label="FullName" name="fullName" type="text" />

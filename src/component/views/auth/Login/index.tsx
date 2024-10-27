@@ -5,8 +5,9 @@ import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react"; // Jika menggunakan NextAuth
 
 import Input from "@/component/Ui/input";
-import Button from "@/component/Ui/Button";
+
 import Authlayout from "@/component/layouts/AuthLayout";
+import Button from "@/component/Ui/Button";
 
 const LoginView = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +46,7 @@ const LoginView = () => {
   };
 
   return (
-    <Authlayout title="Login" isError={isError} link="/auth/register" linkText="Don t have an account? Sign Up">
+    <Authlayout title="Login" isError={isError} link="/auth/register" linkText="Don t have an account? Sign Up ">
       <form onSubmit={handleSubmit}>
         <Input type="email" name="email" placeholder="Enter your email" label="Email" />
 
