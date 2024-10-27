@@ -1,0 +1,23 @@
+.login {
+  &_button {
+    width: 100%;
+  }
+  &_divider {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  &_other {
+    width: 100%;
+    &_button {
+      width: 100%;
+
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    i {
+      font-size: 20px;
+    }
+  }
+}

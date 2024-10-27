@@ -1,0 +1,24 @@
+.sidebar {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  width: 18vw;
+  height: 100vh;
+  &_top {
+    &_title {
+      margin-bottom: 40px;
+    }
+    &_lists {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      &_item {
+        background-color: #fff;
+        border-radius: 10px;
+        display: flex;
+        font-size: 18px;
+        align-items: center;
+      }
+    }
+  }
+}
