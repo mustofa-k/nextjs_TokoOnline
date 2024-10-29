@@ -4,21 +4,45 @@
   padding: 20px;
   width: 18vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   &_top {
     &_title {
       margin-bottom: 40px;
+      font-size: 24px;
+      text-align: center;
     }
     &_lists {
       display: flex;
       flex-direction: column;
       gap: 10px;
       &_item {
-        background-color: #fff;
-        border-radius: 10px;
         display: flex;
-        font-size: 18px;
+        font-size: 15px;
         align-items: center;
+        transition: 0.3s;
+        padding: 10px 15px;
+        gap: 10px;
+        &_icon {
+          font-size: 25px;
+        }
+        &:hover {
+          background-color: #fff;
+          color: #000;
+          transition: 0.3s;
+        }
+        &_active {
+          background-color: #fff;
+          color: #000;
+          transition: 0.3s;
+        }
       }
+    }
+  }
+  &_bottom {
+    &_button {
+      width: 100%;
     }
   }
 }

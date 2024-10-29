@@ -1,13 +1,10 @@
-import AdminLayout from "@/component/layouts/AdminLayout";
-import React from "react";
+import DashboardAdminView from "@/component/views/admin/Dashboard";
 
 function AdminPage() {
   return (
-    <AdminLayout>
-      <div>
-        <div>admin page</div>
-      </div>
-    </AdminLayout>
+    <>
+      <DashboardAdminView />
+    </>
   );
 }
 

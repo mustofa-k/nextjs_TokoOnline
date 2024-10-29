@@ -1,10 +1,16 @@
 import { loginwithGoogle, SigIn } from "@/services/auth/services";
 import { compare } from "bcryptjs";
 import GoogleProvider from "next-auth/providers/google";
-
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+
+// Definisikan tipe untuk user
+interface GoogleUser {
+  email: string;
+  fullName: string;
+  role?: string;
+}
 
 const authOptions: NextAuthOptions = {
   session: {
@@ -23,10 +29,7 @@ const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const { email, password } = credentials as {
-          email: string;
-          password: string;
-        };
+        const { email, password } = credentials;
 
         const user: any = await SigIn(email);
 
@@ -35,10 +38,8 @@ const authOptions: NextAuthOptions = {
           if (passwordConfirm) {
             return user;
           }
-          return null;
-        } else {
-          return null;
         }
+        return null;
       },
     }),
 
@@ -50,7 +51,7 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, account, profile, user }: any) {
       if (account?.provider === "credentials") {
-        token.enail = user.email;
+        token.email = user.email; // Perbaiki dari 'enail' ke 'email'
         token.fullName = user.fullName;
         token.phone = user.phone;
         token.role = user.role;
@@ -63,11 +64,15 @@ const authOptions: NextAuthOptions = {
           type: "google",
         };
 
-        await loginwithGoogle(data, (data: any) => {
-          token.email = data.email;
-          token.fullName = data.fullName;
-          token.role = data.role;
+        const googleUser = await new Promise<GoogleUser>((resolve) => {
+          loginwithGoogle(data, (result: any) => {
+            resolve(result);
+          });
         });
+
+        token.email = googleUser.email;
+        token.fullName = googleUser.fullName;
+        token.role = googleUser.role;
       }
       return token;
     },

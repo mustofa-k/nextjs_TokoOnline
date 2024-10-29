@@ -12,8 +12,8 @@ const listSidebarItem = [
     icon: "bxs-dashboard",
   },
   {
-    title: "Dashboard",
-    url: "/admin",
+    title: "Product",
+    url: "/admin/product",
     icon: "bxs-box",
   },
 ];
