@@ -1,4 +1,4 @@
-import { collection, getDocs, getDoc, doc, getFirestore, query, where, addDoc } from "firebase/firestore";
+import { collection, getDocs, getDoc, doc, getFirestore, query, where, addDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import app from "./init";
 
 const firestore = getFirestore(app);
@@ -50,5 +50,27 @@ export async function AddData(collectionName: string, data: any, callback: Funct
     .catch((err) => {
       callback(false); // Jika ada error saat simpan data
       console.error(err);
+    });
+}
+
+export async function UpdateData(collectionName: string, id: string, data: any, callback: Function) {
+  const docRef = doc(firestore, collectionName, id);
+  await updateDoc(docRef, data)
+    .then(() => {
+      callback(true);
+    })
+    .catch(() => {
+      callback(false);
+    });
+}
+
+export async function DeleteData(collectionName: string, id: string, callback: Function) {
+  const docRef = doc(firestore, collectionName, id);
+  await deleteDoc(docRef)
+    .then(() => {
+      callback(true);
+    })
+    .catch(() => {
+      callback(false);
     });
 }

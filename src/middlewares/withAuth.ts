@@ -14,6 +14,7 @@ export default function withAuth(middleware: NextMiddleware, requireAuth: string
         url.searchParams.set("callbackUrl", encodeURI(req.url));
         return NextResponse.redirect(url);
       }
+
       if (token) {
         if (authPage.includes(pathname)) {
           return NextResponse.redirect(new URL("/", req.url));

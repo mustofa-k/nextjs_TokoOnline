@@ -1,0 +1,42 @@
+.user {
+  &_table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-top: 40px;
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+    }
+    thead {
+      tr {
+        background-color: #f2f2f2;
+      }
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    &_action {
+      display: flex;
+      gap: 10px;
+      &_edit {
+        background-color: #faee45;
+        padding: 15px;
+        color: #000;
+        i {
+          font-size: 20px;
+        }
+      }
+      &_delete {
+        background-color: #fa6f65;
+        padding: 15px;
+
+        i {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
